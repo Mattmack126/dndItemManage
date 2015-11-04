@@ -45,7 +45,7 @@ end
 get '/campaign/:id' do
   @campaign = Campaign.find(params[:id])
   @characters = Character.where(campaign_id:params[:id])
-  
+
   erb :'campaign/show'
 end
 #Edit a campaign~~~~~~~~~~~~~~~~~~
@@ -59,8 +59,11 @@ put '/campaign/:id' do
   update_campaign.name = params[:campaign_name]
   update_campaign.description = params[:campaign_description]
   update_campaign.isactive = params[:isActive]
+  update_campaign.gold = params[:campaign_gold]
+  update_campaign.silver = params[:campaign_silver]
+  update_campaign.copper = params[:campaign_copper]
   update_campaign.save
-  redirect to "/"
+  redirect to "/campaign/#{params[:id]}"
 end
 # Delete a campaign~~~~~~~~~~~~~~~~
 delete '/campaign/:id' do

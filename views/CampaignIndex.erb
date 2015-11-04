@@ -1,0 +1,11 @@
+<h1>HELLO WORLD</h1>
+<% @user_campaigns.each do |campaign| %>
+<% currentCampaign = Campaign.find(campaign.campaign_id) %>
+<a href="/campaign/<%=campaign.campaign_id%>">
+<div>
+<p><%=currentCampaign.name%></p>
+<p><%=currentCampaign.description%></p>
+</div>
+</a>
+<<a href="/campaign/new">New Campaign</a>
+<% end %>

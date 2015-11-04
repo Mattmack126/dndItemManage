@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+  </head>
+  <body>
+
+  <% if logged_in? %>
+  logged in as <%= current_user.full_name %>
+  <form action="/session" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button>logout</button>
+  </form>
+
+  <%end%>
+    <%= yield %>
+  </body>
+</html>

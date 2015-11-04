@@ -1,0 +1,23 @@
+<form action="/campaign/<%=@campaign.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for="">name</label>
+  <input type="text" name="campaign_name" value="<%=@campaign.name%>">
+
+  <label for="">description</label>
+  <input type="text" name="campaign_description" value="<%=@campaign.description%>">
+
+  <label for="">is the campaign active</label>
+  <select name="isActive" id="">
+    <%if @campaign.isactive == true%>
+    <option selected value="true">Yes</option>
+    <option value="false">No</option>
+    <%else%>
+    <option value="true">Yes</option>
+    <option selected value="false">No</option>
+    <%end%>
+  </select>
+  
+
+
+  <button>Update dish type</button>
+</form>

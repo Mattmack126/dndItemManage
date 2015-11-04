@@ -44,6 +44,8 @@ end
 # Display a campaign~~~~~~~~~~~~~~
 get '/campaign/:id' do
   @campaign = Campaign.find(params[:id])
+  @characters = Character.where(campaign_id:params[:id])
+  
   erb :'campaign/show'
 end
 #Edit a campaign~~~~~~~~~~~~~~~~~~
@@ -66,9 +68,25 @@ delete '/campaign/:id' do
   Campaignuser.where(campaign_id:params[:id]).destroy_all
   redirect to "/"
 end
-# Add user to a campaign
-get '/campaign/new/character' do
-  erb :'campaign/newuser'
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~Character~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+# New Character ~~~~~~~~~~~~~~~~~~~
+get '/campaign/:id/character/new' do
+  @campaign = Campaign.find(params[:id])
+  erb :'character/new'
+
+end
+
+# New Character form ~~~~~~~~~~~~~~
+  post '/character/:id' do
+  new_character = Character.new(name:params[:character_name],job:params[:character_class],level:params[:character_level],
+    isalive:'true',user_id:current_user.id,campaign_id:params['id'],gold:'0',silver:'0',copper:'0')
+  new_character.save
+  redirect to "/campaign/#{params['id']}"
 end
 
 

@@ -1,4 +1,43 @@
 <h1> <%=@campaign.name%> <h1>
+
+
+<% @characters.each do |character| %>
+<a href="/character/<%=character.id%>">
+<div>
+<ul>
+<li><%=character.name%></li>
+<li><%=character.job%></li>
+<li><%=character.level%></li>
+<li>gold:<%=character.gold%>, silver:<%=character.silver%>, copper:<%=character.copper%></li>
+</ul>
+</div>
+</a>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/campaign/<%=@campaign.id%>/character/new">New Character</a>
 <a href="/campaign/<%=@campaign.id%>/edit">Edit</a>
 <form action="/campaign/<%=@campaign.id%>" method="post">
   <input type="hidden" name="_method" value="delete">

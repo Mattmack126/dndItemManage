@@ -8,7 +8,8 @@ CREATE TABLE campaigns
   isActive BOOLEAN NOT NULL,
   gold INTEGER NOT NULL,
   silver INTEGER NOT NULL,
-  copper INTEGER NOT NULL
+  copper INTEGER NOT NULL,
+  owner_id INTEGER NOT NULL
   );
 
 CREATE TABLE characters
@@ -34,6 +35,7 @@ CREATE TABLE items
   gold INTEGER NOT NULL,
   silver INTEGER NOT NULL,
   copper INTEGER NOT NULL,
+  quantity INTEGER NOT NULL,
   character_id INTEGER,
   campaign_id INTEGER NOT NULL
 
@@ -65,6 +67,10 @@ INSERT INTO campaigns (name,description,isActive,gold,silver,copper) VALUES('C1'
 
 INSERT INTO campaignuser (user_id,campaign_id,isowner) VALUES('1','1',true)
 
+INSERT INTO items (name,description,weight,gold,silver,copper,quantity,character_id,campaign_id) VALUES ('bow','a bow','1.5','1','20','0','1','2','2')
+
 Dish.where(dish_type_id: params[:dish_type_id])
 
 campaignuser.where(dish_type_id: params[:dish_type_id])
+
+ALTER TABLE campaigns ADD COLUMN owner_id INTEGER NOT NULL;

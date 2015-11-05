@@ -1,5 +1,18 @@
 <h1> <%=@campaign.name%> <h1>
-<h3>gold: <%=@campaign.gold%> Siler: <%=@campaign.silver%>  copper: <%=@campaign.copper%></h3>
+<h2>Group money</h2>
+<form action="/campaign/<%=@campaign.id%>/money" method="post">
+<input type="hidden" name="_method" value="put">
+
+<label for="">Gold: </label>
+<input type="text" name="campaign_gold" value="<%=@campaign.gold%>">
+
+<label for="">Silver: </label>
+<input type="text" name="campaign_silver" value="<%=@campaign.silver%>">
+
+<label for="">Copper: </label>
+<input type="text" name="campaign_copper" value="<%=@campaign.copper%>">
+<button>Update Money</button>
+</form>
 
 
 <% @characters.each do |character| %>
@@ -7,36 +20,13 @@
 <div>
 <ul>
 <li><%=character.name%></li>
+<li>level <%=character.level%></li>
 <li><%=character.job%></li>
-<li><%=character.level%></li>
 <li>gold:<%=character.gold%>, silver:<%=character.silver%>, copper:<%=character.copper%></li>
 </ul>
 </div>
 </a>
 <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <a href="/campaign/<%=@campaign.id%>/character/new">New Character</a>
 <a href="/campaign/<%=@campaign.id%>/edit">Edit</a>
@@ -44,3 +34,4 @@
   <input type="hidden" name="_method" value="delete">
   <button>delete</button>
 </form>
+<a href="/">Back to campaign Select</a>

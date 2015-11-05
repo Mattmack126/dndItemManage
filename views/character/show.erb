@@ -1,0 +1,62 @@
+<h1><%=@character.name%></h1>
+<h3>level <%=@character.level%></h3>
+<h3><%=@character.job%></h3>
+
+<form action="/character/<%=@character.id%>/money" method="post">
+<input type="hidden" name="_method" value="put">
+
+<label for="">Gold: </label>
+<input type="text" name="character_gold" value="<%=@character.gold%>">
+
+<label for="">Silver: </label>
+<input type="text" name="character_silver" value="<%=@character.silver%>">
+
+<label for="">Copper: </label>
+<input type="text" name="character_copper" value="<%=@character.copper%>">
+<button>Update Money</button>
+</form>
+
+
+<a href="/character/<%=@character.id%>/edit">Edit Character</a>
+<table border="1" style="width:100%">
+  <tr>
+    <th>Item</th>
+    <th>Description</th>
+    <th>Value</th>
+    <th>Weight</th>
+    <th>Quantity</th>
+    <th></th>
+  </tr>
+  <%totalweight = 0%>
+  <%totalgold = 0%>
+  <%totalsilver = 0%>
+  <%totalcopper = 0%>
+  <%@items.each do |item| %>
+  <%fullweight = item.weight*item.quantity%>
+  <%totalweight = totalweight+fullweight%>
+  <%totalgold = totalgold+item.gold%>
+  <%totalsilver = totalsilver+item.silver%>
+  <%totalcopper = totalcopper+item.copper%>
+  <tr>
+    <td><a href="/item/<%=item.id%>/edit"><%=item.name%></a></td>
+    <td><%=item.description%></td>
+    <td>gold: <%=item.gold%> Siler: <%=item.silver%>  copper: <%=item.copper%></td>
+    <td><%=fullweight%>lbs</td>
+    <td><%=item.quantity%></td>
+    <td>
+      <form action="/item/<%=item.id%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button>X</button>
+      </form>
+    </td>
+  </tr>
+  <%end%>
+</table>
+<div>Total Weight: <%=totalweight%>lbs</div>
+<div>Total Value: gold: <%=totalgold%> Siler: <%=totalsilver%>  copper: <%=totalcopper%> </div>
+<a href="/character/<%=@character.id%>/item/new">New Item</a>
+<form action="/character/<%=@character.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button>delete</button>
+</form>
+<a href="/campaign/<%=@character.campaign_id%>">Back to campaign</a>

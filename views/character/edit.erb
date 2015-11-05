@@ -1,0 +1,14 @@
+<form action="/character/<%=@character.id%>" method="post">
+<input type="hidden" name="_method" value="put">
+
+<label for="">Character name</label>
+<input type="text" name="character_name" value="<%=@character.name%>">
+
+<label for="">Class</label>
+<input type="text" name="character_class" value="<%=@character.job%>">
+
+<label for="">level</label>
+<input type="number" name="character_level" value="<%=@character.level%>">
+<button>update character</button>
+
+</form>

@@ -40,7 +40,7 @@
   <tr>
     <td><a href="/item/<%=item.id%>/edit"><%=item.name%></a></td>
     <td><%=item.description%></td>
-    <td>gold: <%=item.gold%> Siler: <%=item.silver%>  copper: <%=item.copper%></td>
+    <td>gold: <%=item.gold%> Silver: <%=item.silver%>  copper: <%=item.copper%></td>
     <td><%=fullweight%>lbs</td>
     <td><%=item.quantity%></td>
     <td>
@@ -53,7 +53,7 @@
   <%end%>
 </table>
 <div>Total Weight: <%=totalweight%>lbs</div>
-<div>Total Value: gold: <%=totalgold%> Siler: <%=totalsilver%>  copper: <%=totalcopper%> </div>
+<div>Total Value: gold: <%=totalgold%> Silver: <%=totalsilver%>  copper: <%=totalcopper%> </div>
 <a href="/character/<%=@character.id%>/item/new">New Item</a>
 <form action="/character/<%=@character.id%>" method="post">
   <input type="hidden" name="_method" value="delete">

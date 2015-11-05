@@ -179,6 +179,7 @@ end
 
 # Edit Item form ~~~~~~~~~~~~~~
   put '/item/:id' do
+    temp_owner_id = Item.find(params[:id])
     update_item = Item.find(params[:id])
   update_item.name = params[:item_name]
   update_item.description = params[:item_description]
@@ -187,8 +188,9 @@ end
   update_item.silver = params[:item_silver]
   update_item.copper = params[:item_copper]
   update_item.quantity = params[:item_quantity]
+  update_item.character_id = params[:item_owner]
   update_item.save
-  redirect to "/character/#{update_item.character_id}"
+  redirect to "/character/#{temp_owner_id.character_id}"
 end
 
 

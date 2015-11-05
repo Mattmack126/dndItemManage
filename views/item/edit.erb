@@ -1,33 +1,33 @@
 <form action="/item/<%=@item.id%>" method="post">
-<input type="hidden" name="_method" value="put">
-
-<label for="">Item Name</label>
-<input type="text" name="item_name" value="<%=@item.name%>">
-
-<label for="">Description</label>
-<input type="text" name="item_description" value="<%=@item.description%>">
-
-<label for="">Weight</label>
-<input type="number" name="item_weight" step="0.5" value="<%=@item.weight%>">
-
-<label for="">Gold</label>
-<input type="number" name="item_gold" value="<%=@item.gold%>">
-
-<label for="">Silver</label>
-<input type="number" name="item_silver" value="<%=@item.silver%>">
-
-<label for="">Copper</label>
-<input type="number" name="item_copper" value="<%=@item.copper%>">
-
-<label for="">Quantity</label>
-<input type="number" name="item_quantity" value="<%=@item.quantity%>">
-
-<label for="">Quantity</label>
-<%currentcharacters = Character.where(campaign_id:@item.campaign_id)%>
-<select name="item_owner" id="">
-  
-</select>
-
-<button>Edit Item</button>
-
+  <input type="hidden" name="_method" value="put">
+  <label for="">Item Name</label>
+  <input type="text" name="item_name" value="<%=@item.name%>">
+  <label for="">Description</label>
+  <input type="text" name="item_description" value="<%=@item.description%>">
+  <label for="">Weight</label>
+  <input type="number" name="item_weight" step="0.5" value="<%=@item.weight%>">
+  <label for="">Gold</label>
+  <input type="number" name="item_gold" value="<%=@item.gold%>">
+  <label for="">Silver</label>
+  <input type="number" name="item_silver" value="<%=@item.silver%>">
+  <label for="">Copper</label>
+  <input type="number" name="item_copper" value="<%=@item.copper%>">
+  <label for="">Quantity</label>
+  <input type="number" name="item_quantity" value="<%=@item.quantity%>">
+  <label for="">Quantity</label>
+  <%currentcharacters = Character.where(campaign_id:@item.campaign_id)%>
+  <select name="item_owner" id="">
+    <%currentcharacters.each do |character|%>
+    <%if character.id == @item.character_id%>
+    <option selected value="<%=character.id%>">
+      <%=character.name%>
+    </option>
+    <%else%>
+    <option value="<%=character.id%>">
+      <%=character.name%>
+    </option>
+    <%end%>
+    <%end%>
+  </select>
+  <button>Edit Item</button>
 </form>

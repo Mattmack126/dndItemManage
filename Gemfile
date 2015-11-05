@@ -2,5 +2,5 @@
 source "https://rubygems.org"
 gem 'sinatra'
 gem 'activerecord'
-gem 'bcrypt'
+gem 'bcrypt-ruby'
 # gem "rails"

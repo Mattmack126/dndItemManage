@@ -1,6 +1,6 @@
-require 'pry'
+# require 'pry'
 require 'sinatra'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 require_relative 'db_config'
 require_relative 'models/character'
 require_relative 'models/campaign'
